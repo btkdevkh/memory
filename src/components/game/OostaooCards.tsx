@@ -75,7 +75,7 @@ export default function OostaooCards() {
         setDisabledCard(true)
       }
     }   
-  }, [count])
+  }, [count, intervalId])
 
   // useEffect 3
   useEffect(() => {
@@ -87,7 +87,7 @@ export default function OostaooCards() {
       setIsWinner(true)
       setDisabledCard(true)
     }
-  }, [cards])
+  }, [cards, intervalId])
 
   // useEffect 2
   useEffect(() => {
@@ -102,7 +102,7 @@ export default function OostaooCards() {
         setTimeout(() => resetLocalState(), 1000)
       }
     }
-  }, [chosenFirstCard, chosenSecondCard])
+  }, [chosenFirstCard, chosenSecondCard, dispatch])
 
   // useEffect 1
   useEffect(() => {

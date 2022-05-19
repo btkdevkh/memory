@@ -15,7 +15,7 @@ export default function Progressbar({ count, timeInSecond }: Props) {
       const percents = `${Math.ceil((count / timeInSecond * 100))}%`      
       progressbarRef.current!.style.width = percents
     }
-  }, [count])
+  }, [count, timeInSecond])
   
   return (
     <Fragment>
