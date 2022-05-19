@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@400&display=swap");
+
+// base styles
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  line-height: 1.5;
+  font-family: "Comfortaa", sans-serif;
+
+  img {
+    width: 100%;
+    display: block;
+  }
+}
+
+// container
+.container {
+  max-width: 924px;
+  margin: 0 auto;
+  padding: 0 15px;
+  text-align: center;
+}
+
+/** 
+  COMPONENTS :
+**/
+// Navbar
+.navbar {
+  padding: 15px;
+  background-color: blueviolet;
+
+  .main-title {
+    color: white;
+  }
+}
+
+// OostaooCards
+.oostaoo-cards {
+  margin: 15px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+
+  .oostaoo-card-item {
+    position: relative;
+    cursor: pointer;
+
+    div {
+      border-radius: 5px;
+      border: 7px solid #ddd;
+    }
+
+    // reveal card
+    .reveal-card {
+      transform: rotateY(90deg);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+    .flipped .reveal-card {
+      transform: rotateY(0deg);
+      padding: 25px;
+    }
+
+    // cover card
+    .cover-card {
+      transition: all ease-in 0.2s;
+      transition-delay: 0.2s;
+    }
+
+    .flipped .cover-card {
+      transform: rotateY(90deg);
+      transition-delay: 0s;
+    }
+  }
+}
+
+// Progressbar
+.progressbar-container {
+  position: relative;
+  width: 100%;
+  margin: 25px auto;
+  height: 10px;
+  border-radius: 3px;
+  background-color: #ddd;
+
+  .progressbar {
+    width: 0;
+    height: 10px;
+    border-radius: 3px;
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  }
+
+  .fa-clock {
+    color: blueviolet;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// Alert
+.alert {
+  padding: 25px;
+  color: white;
+  font-size: 1.3rem;
+  border-radius: 3px;
+  background-color: rgba(0,0,0,0.7);
+  margin: 15px 0;
+
+  p {
+    margin-bottom: 25px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    color: white;
+    background-color: blueviolet;
+    border-radius: 3px;
+  }
+}
+
+@media (min-width: 620px) {
+  .container {
+    max-width: 620px;
+  }
+}
