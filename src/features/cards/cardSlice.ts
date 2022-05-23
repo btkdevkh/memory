@@ -5,6 +5,14 @@ import cardService from './cardService'
 // Initial State
 const initialState: IInitialState = {
   cards: [],
+  chosenFirstCard: null,
+  chosenSecondCard: null,
+  count: 0,
+  intervalId: 0,
+  isWinner: false,
+  isLooser: false,
+  disabledCard: false,
+
   isError: false,
   isSucess: false,
   isLoading: false,
@@ -31,18 +39,54 @@ export const cardSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => initialState,
-    handleChosenCard: (state, action) => {      
-      const matchedCards = state.cards.map(c => {
-        if(c.filePath === action.payload.filePath) {
-          return { ...c, matched: true }
-        } else {
-          return c
+    resetCertainState: (state) => {
+      state.chosenFirstCard = null
+      state.chosenSecondCard = null   
+      state.isWinner = false
+      state.isLooser = false
+      state.disabledCard = false
+    },
+    resetTimerIsLost: (state) => {
+      clearInterval(state.intervalId);
+      state.intervalId = 0
+      state.count = 0
+      state.isLooser = true
+      state.disabledCard = true
+    },
+    resetTimerIsWon: (state) => {
+      clearInterval(state.intervalId);
+      state.intervalId = 0
+      state.count = 0
+      state.isWinner = true
+      state.disabledCard = true
+    },
+    setDisabledCard: (state, action) => {
+      state.disabledCard = action.payload
+    },
+    setIntervalId: (state, action) => {
+      state.intervalId = action.payload
+    },
+    startTimer: (state) => {
+      state.count += 1
+    },
+    handleChosenCard: (state, action) => {   
+      state.chosenFirstCard ?
+      state.chosenSecondCard = action.payload :
+      state.chosenFirstCard = action.payload 
+    },
+    handleMatchedCards: (state, action) => {
+      const matchedCards = state.cards.map(card => {
+        if(card.filePath === action.payload.filePath) {
+          return { ...card, matched: true }
+        } else {          
+          return card
         }
       })
-
+    
       state.cards = matchedCards
     }
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(getCards.pending, (state) => {
@@ -61,5 +105,16 @@ export const cardSlice = createSlice({
   }
 })
 
-export const { reset, handleChosenCard } = cardSlice.actions
+export const { 
+  reset, 
+  handleChosenCard, 
+  handleMatchedCards,
+  resetCertainState,
+  setDisabledCard,
+  startTimer,
+  resetTimerIsLost,
+  resetTimerIsWon,
+  setIntervalId
+ } = cardSlice.actions
+ 
 export default cardSlice.reducer
