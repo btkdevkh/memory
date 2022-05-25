@@ -8,7 +8,7 @@ type Props = {
   disabledCard: boolean
 }
 
-export default function OostaooCard({ card, handleClickChooseCard, matched, disabledCard }: Props) {
+export default function GameCard({ card, handleClickChooseCard, matched, disabledCard }: Props) {
   const { title, filePath } = card
 
   const handleClickOnCard = (card: ICard) => {

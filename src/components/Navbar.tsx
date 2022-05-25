@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="container">
-        <MainTitle title="Oostaoo Memory" />
+        <MainTitle title="Memory Game" />
       </div>
     </nav>
   )

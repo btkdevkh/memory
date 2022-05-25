@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import OostaooCards from "./components/game/OostaooCards";
+import GameCards from "./components/game/GameCards";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <Fragment>
       <Navbar />
       <div className="container">
-        <OostaooCards /> 
+        <GameCards /> 
       </div>
     </Fragment>
   );

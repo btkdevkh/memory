@@ -5,12 +5,12 @@ import { getCards, handleChosenCard } from '../../features/cards/cardSlice';
 import ICard from '../../types/Card';
 import Alert from '../Alert';
 import Progressbar from '../Progressbar';
-import OostaooCard from './OostaooCard';
+import GameCard from './GameCard';
 
 // initial time(s)
 let TIME_IN_SECOND = 60
 
-export default function OostaooCards() {
+export default function GameCards() {
   // redux state
   const dispatch = useDispatch<AppDispatch>()
   const { cards } = useSelector((state: RootState) => state.cards) 
@@ -137,8 +137,8 @@ export default function OostaooCards() {
         {
           cards &&
           cards.length > 0 &&
-          cards.map((card) => (
-            <OostaooCard  
+          cards.map((card: ICard) => (
+            <GameCard  
               key={card.id}
               card={card}
               handleClickChooseCard={handleClickChooseCard}
