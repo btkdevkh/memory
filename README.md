@@ -1,6 +1,6 @@
 # Memory | Projet en React, Redux avec TypeScript
 
-### Site of project: https://oostaoo-memory.netlify.app/
+### Site of project: https://btkdevkh-memory-game.netlify.app/
 
 ### Clone or Download this GitHub repository.
 
